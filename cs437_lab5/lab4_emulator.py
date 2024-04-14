@@ -5,7 +5,6 @@ import json
 import pandas as pd
 import numpy as np
 
-
 #TODO 1: modify the following parameters
 #Starting and end index, modify this
 device_st = 0
@@ -17,7 +16,6 @@ data_path = "./data2/vehicle{}.csv"
 #Path to your certificates, modify this
 certificate_formatter = "./certificates/device_{}.certificate.pem"
 key_formatter = "./certificates/device_{}.private.key"
-
 
 class MQTTClient:
     def __init__(self, device_id, cert, key):
@@ -34,31 +32,25 @@ class MQTTClient:
         self.client.configureMQTTOperationTimeout(5)  # 5 sec
         self.client.onMessage = self.customOnMessage
         
-
     def customOnMessage(self,message):
         #TODO3: fill in the function to show your received message
         print("client {} received payload {} from topic {}".format(self.device_id, message.payload, message.topic))
-
 
     # Suback callback
     def customSubackCallback(self,mid, data):
         #You don't need to write anything here
         pass
 
-
     # Puback callback
     def customPubackCallback(self,mid):
         #You don't need to write anything here
         pass
-
 
     def publish(self, Payload="payload"):
         #TODO4: fill in this function for your publish
         self.client.subscribeAsync("myTopic", 0, ackCallback=self.customSubackCallback)
         
         self.client.publishAsync("myTopic", Payload, 0, ackCallback=self.customPubackCallback)
-
-
 
 print("Loading vehicle data...")
 data = []
@@ -73,7 +65,6 @@ for device_id in range(device_st, device_end):
     client.client.connect()
     clients.append(client)
  
-
 while True:
     # print("send now?")
     x = input("send now?")
