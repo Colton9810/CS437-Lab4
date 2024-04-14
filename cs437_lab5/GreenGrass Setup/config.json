@@ -1,0 +1,29 @@
+{
+  "coreThing" : {
+    "caPath": "AmazonRootCA1.pem",
+    "certPath": "97b7645408c38449cb4df4b8224a44ccbe5f76346cc9d9a81bf9211ef9e4bb56-certificate.pem.crt",
+    "keyPath": "97b7645408c38449cb4df4b8224a44ccbe5f76346cc9d9a81bf9211ef9e4bb56-private.pem.key",
+    "thingArn": "arn:aws:iot:us-east-2:471112750482:thing/MyGreengrassV1Core",
+    "iotHost": "ec2-18-222-124-203-ats.iot.us-east-2.amazonaws.com",
+    "ggHost": "greengrass-ats.iot.us-east-2.amazonaws.com",
+    "keepAlive": 600
+  },
+  "runtime": {
+    "cgroup": {
+      "useSystemd": "yes"
+    }
+  },
+  "managedRespawn": false,
+  "crypto": {
+    "caPath": "file:///greengrass/certs/AmazonRootCA1.pem",
+    "principals": {
+      "SecretsManager": {
+        "privateKeyPath": "file:///greengrass/certs/97b7645408c38449cb4df4b8224a44ccbe5f76346cc9d9a81bf9211ef9e4bb56-private.pem.key"
+      },
+      "IoTCertificate": {
+        "privateKeyPath": "file:///greengrass/certs/97b7645408c38449cb4df4b8224a44ccbe5f76346cc9d9a81bf9211ef9e4bb56-private.pem.key",
+        "certificatePath": "file:///greengrass/certs/97b7645408c38449cb4df4b8224a44ccbe5f76346cc9d9a81bf9211ef9e4bb56-certificate-certificate.pem.crt"
+      }
+    }
+  }
+}
